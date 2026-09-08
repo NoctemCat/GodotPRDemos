@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://ro28fcngt7ao"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6f7qh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rxg2q"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6f7qh"]
+size = Vector2(30, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_glv2v"]
+data = PackedVector3Array(15, -15, 0, -15, -15, 0, 15, 15, 0, -15, -15, 0, -15, 15, 0, 15, 15, 0)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tyf7m"]
+
+[sub_resource type="Sky" id="Sky_fonic"]
+sky_material = SubResource("ProceduralSkyMaterial_tyf7m")
+
+[sub_resource type="Environment" id="Environment_6f7qh"]
+background_mode = 2
+sky = SubResource("Sky_fonic")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxg2q"]
+albedo_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+
+[node name="Main" type="Node3D" unique_id=17447380]
+
+[node name="Player" type="Player" parent="." unique_id=448344622 node_paths=PackedStringArray("pivot")]
+pivot = NodePath("Pivot")
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6852139, 0)
+
+[node name="Pivot" type="Node3D" parent="Player" unique_id=3271906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6393807, -0.24948105)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Pivot" unique_id=808018260]
+
+[node name="CapsuleMesh" type="MeshInstance3D" parent="Player" unique_id=518447936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_6f7qh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1995432307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_rxg2q")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=958072619]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_6f7qh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=953512194]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1537343507]
+shape = SubResource("ConcavePolygonShape3D_glv2v")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=629790393]
+environment = SubResource("Environment_6f7qh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1809764188]
+transform = Transform3D(1, 0, 0, 0, 0.3023463, 0.95319813, 0, -0.95319813, 0.3023463, 0, 2.4897823, 0)
+light_energy = 1.867
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1050937494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.056167, -0.0063290596, -7.192447)
+use_collision = true
+size = Vector3(2.7120361, 2.540039, 4.732422)
+material = SubResource("StandardMaterial3D_rxg2q")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=471145938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7521677, 0, -6.935092)
+use_collision = true
+polygon = PackedVector2Array(-7.9038115, 0.40623856, -4.8721085, 4.431443, -3.0567021, 4.333303, -1.6879091, 3.36477, 0.16301632, 2.4375792, 3.201559, 1.049253, 0.6867361, -0.11583662)
+material = SubResource("StandardMaterial3D_rxg2q")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1726115615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -4.1544805)
+use_collision = true
+radius = 0.85710114
+material = SubResource("StandardMaterial3D_rxg2q")

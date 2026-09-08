@@ -1,0 +1,5 @@
+bin/
+__pycache__/
+*.o
+.sconsign.dblite
+compile_commands.json

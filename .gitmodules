@@ -1,0 +1,7 @@
+[submodule "godot"]
+	path = godot
+	url = https://github.com/NoctemCat/godot.git
+	branch = libgodot_linux_merge_static_libraries
+[submodule "godot-cpp"]
+	path = godot-cpp
+	url = https://github.com/godotengine/godot-cpp.git
